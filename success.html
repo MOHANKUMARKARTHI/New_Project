@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Placed</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <main class="wrap" style="max-width:700px;">
+    <div class="cat-card" style="padding:22px; align-items:center;">
+      <h1>✅ Order Successful</h1>
+      <p>Your order <b>#<span id="orderId">—</span></b> has been placed.</p>
+      <p>Total paid: <b id="orderTotal">₹0.00</b></p>
+      <a class="btn" href="index.html" style="display:inline-block; margin-top:10px;">Back to Home</a>
+    </div>
+  </main>
+  <script type="module">
+    import { renderSuccess } from './assets/js/app.js';
+    renderSuccess();
+  </script>
+</body>
+</html>

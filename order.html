@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders - elGrocer</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #f4f4f4;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="topbar">
+      <div class="brand">el<b>Grocer</b></div>
+      <span class="spacer"></span>
+      <a class="icon-btn" href="index.html">🏠 Home</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h2>Your Orders</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="ordersTable">
+        <tr><td colspan="3">Loading orders...</td></tr>
+      </tbody>
+    </table>
+  </main>
+
+  <script>
+    const ORDERS_API = "http://localhost:8080/api/orders/view";
+
+    async function loadOrders() {
+      try {
+        const res = await fetch(ORDERS_API);
+        if (!res.ok) throw new Error("Failed to fetch orders");
+        const orders = await res.json();
+
+        const table = document.getElementById("ordersTable");
+
+        if (orders.length === 0) {
+          table.innerHTML = `<tr><td colspan="3">No orders found</td></tr>`;
+          return;
+        }
+
+        table.innerHTML = orders.map(order => `
+          <tr>
+            <td>${order.fullName}</td>
+            <td>${order.address}</td>
+            <td>₹${order.totalAmount != null ? order.totalAmount.toFixed(2) : "0.00"}</td>
+          </tr>
+        `).join("");
+      } catch (err) {
+        console.error(err);
+        document.getElementById("ordersTable").innerHTML =
+          `<tr><td colspan="3">Error loading orders</td></tr>`;
+      }
+    }
+
+    loadOrders();
+  </script>
+</body>
+</html>

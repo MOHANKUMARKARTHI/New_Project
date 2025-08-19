@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>elGrocer • Home</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .footer {
+  background: #222;
+  color: #ddd;
+  padding: 40px 20px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer h3 {
+  color: #fff;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.footer h4 {
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.footer p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer ul li {
+  margin-bottom: 10px;
+}
+
+.footer ul li a {
+  text-decoration: none;
+  color: #bbb;
+  transition: color 0.3s ease;
+}
+
+.footer ul li a:hover {
+  color: #fff;
+}
+
+.footer .social-icons {
+  display: flex;
+  gap: 10px;
+  font-size: 20px;
+}
+
+.footer .social-icons a {
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+  color: #00aced;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #444;
+  margin-top: 30px;
+  padding-top: 15px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="topbar">
+      <div class="brand">el<b>Grocer</b></div>
+       <div class="muted" id="storeBtn">🏬 Stores</div>
+<div class="muted" id="currentStore">📍 Tambaram</div>
+
+<!-- Store Modal -->
+<div id="storeModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Select a Store</h2>
+    <ul id="storeList">
+      <li data-store="Tambaram">Tambaram Supermart</li>
+      <li data-store="Velachery">Velachery Fresh Foods</li>
+      <li data-store="Anna Nagar">Anna Nagar Grocery Hub</li>
+    </ul>
+  </div>
+</div>
+      <span class="spacer"></span>
+      <button class="icon-btn" onclick="location.href='Account.html'">👤 Account</button>
+      <a class="icon-btn" href="cart.html">🧺 Basket <span class="badge" data-cart-count>0</span></a>
+    </div>
+
+    <div class="searchbar">
+      <input id="searchInput" placeholder="Search Almaya Market…">
+      <button id="searchBtn">Search</button>
+    </div>
+
+    <nav class="nav-tabs">
+      <a data-active="home" class="active">Home</a>
+      <a href="products.html" data-active="products">Browse</a>
+       <a href="order.html" data-active="orders">Orders</a>
+    </nav>
+
+    <div class="hero-dots"></div>
+  </header>
+
+  <main class="wrap">
+    <div class="section-title">Categories</div>
+    <section id="categories" class="categories"></section>
+  </main>
+  <hr>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-about">
+      <h3>el<b>Grocer</b></h3>
+      <p>Your one-stop online grocery store delivering fresh products at your doorstep.</p>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contact Us</h4>
+      <p>Email: support@elgrocer.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Nungambakkam, Chennai</p>
+    </div>
+
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <a href="#">Facebook</a> | 
+      <a href="#">Instagram</a> | 
+      <a href="#">Twitter</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 elGrocer. All rights reserved.</p>
+  </div>
+</footer>
+
+
+  <script type="module">
+    import { initHeader, renderHome } from './assets/js/app.js';
+    initHeader('home');
+    renderHome();
+    document.getElementById('searchBtn').addEventListener('click', ()=> {
+      const q = document.getElementById('searchInput').value.trim();
+      if (q) location.href = `products.html?q=${encodeURIComponent(q)}`;
+    });
+  </script>
+</body>
+</html>

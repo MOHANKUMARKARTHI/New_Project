@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Products</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a href="index.html" class="brand">el<b>Grocer</b></a>
+    <span class="spacer"></span>
+    <a class="icon-btn" href="cart.html">🧺 Basket <span class="badge" data-cart-count>0</span></a>
+  </header>
+
+  <main class="wrap">
+    <div class="toolbar">
+      <input id="searchProducts" placeholder="Search products…">
+      <select id="categorySelect">
+        <option value="all">All Categories</option>
+        <option value="bakery">Bakery</option>
+        <option value="beverages">Beverages</option>
+        <option value="dairy-eggs">Dairy & Eggs</option>
+        <option value="snacks">Snacks</option>
+        <option value="fruits-veg">Fruits & Vegetables</option>
+        <option value="meat">Packed Meat</option>
+        <option value="nuts">Nuts</option>
+      </select>
+      <a href="cart.html" class="btn">Basket</a>
+    </div>
+    <h2 id="resultTitle" class="section-title">Products</h2>
+    <section id="productGrid" class="product-grid"></section>
+  </main>
+
+  <script type="module">
+    import { initHeader, renderProducts } from './assets/js/app.js';
+    initHeader('products');
+    renderProducts();
+  </script>
+</body>
+</html>
